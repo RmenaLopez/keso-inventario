@@ -30,3 +30,5 @@ tmp
 # task file temporary files
 .task
 
+
+*.sql
