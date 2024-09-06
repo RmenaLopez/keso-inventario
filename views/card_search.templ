@@ -1,0 +1,38 @@
+package views
+
+templ CardSearch() {
+	<div class="m-2">
+		<div class="font-mono h1 text-white text-4xl font-bold">Search</div>
+
+		<div id="SearchBar">
+			@SearchBar()
+		</div>
+
+		<div id="ping" class="text-indigo-300 m-2"></div>
+		<button type="button" class="bg-emerald-700 w-24 p-2 rounded-xl shadow-xl text-white font-bold" hx-trigger="click" hx-post="/ping" hx-target="#ping" hx-swap="innerHTML">Ping</button>
+
+		<div id="searach-results" class="m-2">
+		</div>
+
+	</div>
+}
+
+templ SearchBar() {
+	<div>
+		<form
+		hx-post="/search" 
+		hx-target="#searach-results" 
+		hx-swap="innerHTML"
+		>
+			<input
+				type="text"
+				name="card-name"
+				placeholder="Search"
+				autocomplete="off"
+			/>
+			<button class="btn">
+				Search! <img class="htmx-indicator"/>
+			</button>
+		</form>
+	</div>
+}

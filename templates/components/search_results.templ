@@ -1,0 +1,32 @@
+package components
+
+import (
+    "app/model"
+)
+
+templ SearchResults(cards []*model.Card) {
+    <table class="table-fixed container">
+        <thead>
+            <tr>
+                <th class="text-left">Image</th>
+                <th class="text-left">Name</th>
+                <th class="text-left">Description</th>
+            </tr>
+        </thead>
+        <tbody>
+        	for _, i := range cards {
+                <tr>
+                    <td>
+                        <img
+			        	src={ i.GetImageUrl() }
+				        alt={ i.GetImageUrl() }
+			            />
+                    </td>
+                    <td>{ i.Name }</td>
+                    <td>{ i.Oracle }</td>
+                </tr>
+		    }
+
+        </tbody>
+    </table>
+}

@@ -1,0 +1,24 @@
+services:
+    app:
+        build:
+            context: .
+            dockerfile: Dockerfile
+        image: inventory/manager
+        ports:
+            - 8080:8080
+    carddb:
+        image: mysql:latest
+        restart: always
+        environment:
+            MYSQL_MULTIPLE_DATABASES: carddb,inventorydb
+            MYSQL_ROOT_PASSWORD: root
+            MYSQL_USER: user
+            MYSQL_PASSWORD: password
+        ports:
+            - 3306:3306
+        volumes:
+            - mysql_data:/var/lib/mysql
+            - ./sql_dump:/docker-entrypoint-initdb.d
+volumes:
+    mysql_data:
+        driver: local
